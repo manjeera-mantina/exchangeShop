@@ -42,7 +42,7 @@
 			<tr>
 				<td><a href="/songs/${song.id}"><c:out value="${song.title}"></c:out></a></td>
 				<td><c:out value="${song.rating}"></c:out></td>
-				<td><a href="/delete/${song.id}">delete</a></td>
+				<td><a href="/songs/${song.id}/delete">delete</a></td>
 			</tr>	
 		</c:forEach>
     </tbody>

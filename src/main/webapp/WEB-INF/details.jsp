@@ -29,6 +29,6 @@
     </thead>
 </table>
 <br>
-<a href="/delete/${song.id}">Delete</a>
+<a href="/songs/${song.id}/delete">Delete</a>
 </body>
 </html>

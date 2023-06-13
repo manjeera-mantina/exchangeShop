@@ -30,16 +30,19 @@ public class SongController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String dashboard(@ModelAttribute("song") Song song, Model model) {
+	public String dashboard(String artist, Model model) {
 		List<Song> songs = songService.allSongs();
 		model.addAttribute("songs", songs);
 		return "dashboard.jsp";
 	}
 	
-	@PostMapping("/dashboard")
-	public String dashboard(@RequestParam("artist") String artist, Model model) {
-		model.addAttribute("artist", artist);
-		return "redirect:/search/"+artist;
+	@GetMapping("/search")
+	public String search(@RequestParam(value="q", required=false) String artist, Model model) {
+		if(artist!=null){
+			List<Song> songs = songService.findByArtist(artist);
+			model.addAttribute("songs", songs);
+		}
+		return "dashboard.jsp";
 	}
 	
 	@GetMapping("/songs/new")
@@ -64,22 +67,14 @@ public class SongController {
 		return "details.jsp";
 	}
 	
-	@GetMapping("/search/topTen")
+	@GetMapping("/top-ten")
 	public String details(Model model) {
 		List<Song> songs = songService.topTen();
 		model.addAttribute("songs", songs);
 		return "top.jsp";
 	}
 	
-	@GetMapping("/search/{artist}")
-	public String search(@PathVariable("artist") String artist, Model model) {
-		List<Song> songs = songService.findByArtist(artist);
-//		List<Song> songs = songService.findByTitle(artist);
-		model.addAttribute("songs", songs);
-		return "search.jsp";
-	}
-	
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/songs/{id}/delete")
 	public String deleteSong(@PathVariable("id") Long id) {
 		songService.deleteSong(songService.findSong(id));
 		return "redirect:/dashboard";

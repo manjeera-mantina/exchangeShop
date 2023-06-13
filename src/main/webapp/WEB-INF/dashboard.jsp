@@ -16,11 +16,11 @@
     <thead>
         <tr>
             <th><a class="in-line" href="/songs/new">Add New</a></th>
-            <th><a class="in-line" href="/search/topTen">Top Ten</a></th>
+            <th><a class="in-line" href="/top-ten">Top Ten</a></th>
             <th>
-	            <form class="in-line" action="/dashboard" method="post">
+	            <form class="in-line" action="/search" method="get">
 	
-					<input class="in-line" type="text" id="artist" name="artist" placeholder="Search"/>
+					<input class="in-line" type="text" id="artist" name="q" placeholder="Search"/>
 					<input class="in-line" class="button" type="submit" value="Submit"/>
 					
 				</form>
@@ -42,7 +42,7 @@
 			<tr>
 				<td><a href="/songs/${song.id}"><c:out value="${song.title}"></c:out></a></td>
 				<td><c:out value="${song.rating}"></c:out></td>
-				<td><a href="/delete/${song.id}">delete</a></td>
+				<td><a href="/songs/${song.id}/delete">delete</a></td>
 			</tr>	
 		</c:forEach>
     </tbody>
