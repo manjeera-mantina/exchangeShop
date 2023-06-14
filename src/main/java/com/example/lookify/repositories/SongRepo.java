@@ -14,10 +14,6 @@ public interface SongRepo extends CrudRepository<Song, Long> {
 	List<Song> findAll();
 	
 	List<Song> findByArtistContaining(String artist);
-	List<Song> findByTitleContaining(String title);
-	
-	List<Song> findAllByOrderByRatingDesc();
-	List<Song> findTopByOrderByRatingDesc();
 	
 	@Query(value = "SELECT * FROM songs ORDER BY rating DESC LIMIT 10", nativeQuery = true) 
 	List<Song> getTopTen();
