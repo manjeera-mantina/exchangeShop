@@ -33,10 +33,6 @@ public class SongService {
 		}
 	}
 	
-	public List<Song> findByArtist(String artist) {
-		return songRepo.findByArtistContaining(artist);
-	}
-	
 	public List<Song> topTen() {
 		return songRepo.getTopTen();
 	}

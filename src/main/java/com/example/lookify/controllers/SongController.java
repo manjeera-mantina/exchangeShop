@@ -37,11 +37,8 @@ public class SongController {
 	}
 	
 	@GetMapping("/search")
-	public String search(@RequestParam(value="q", required=false) String artist, Model model) {
-		if(artist!=null){
-			List<Song> songs = songService.findByArtist(artist);
-			model.addAttribute("songs", songs);
-		}
+	public String search() {
+		// TODO - finish later
 		return "dashboard.jsp";
 	}
 	
