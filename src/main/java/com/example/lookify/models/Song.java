@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -31,6 +32,7 @@ public class Song {
 	@Size(min = 5, message="Must be at least 5 characters")
 	private String artist;
 	
+	@NotNull
 	@Min(value = 1, message="Rating must be 1-10")
 	@Max(value = 10, message="Rating must be 1-10")
 	private Integer rating;
